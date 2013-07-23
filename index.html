@@ -1,5 +1,8 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head> 
+	<meta charset="utf-8">
+	
 	<title>Drupal Theming with Modular CSS</title>
 
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -26,8 +29,35 @@
 		<div class="slides">
 			<section>
 				<h1>Drupal Theming with Modular CSS</h1>
-				<h3>Nick Grace, Heather Rodriguez &amp; Joseph Gunawan </h3>
+				<small>Nick Grace, Heather Rodriguez &amp; Joseph Gunawan </small>
 			</section>
+			<section>
+				<h2>What is SMACSS?</h2>
+				<p>Scalable Modular Architecture for CSS</p>
+			</section>
+
+			<section>
+					<h2>Base</h2>
+					<pre><code data-trim contenteditable>
+.row {
+  clear: left;
+  overflow: hidden;
+  zoom: 1;
+  _overflow: visible;
+}
+
+.row-features {
+  padding: 1em 0;
+  background-color: blue;
+}
+
+.row-postscript {
+  padding: 1em 0;
+  background-color: pink;
+}
+					</code></pre>
+				</section>
+
 
 		</div>
 	</div>
