@@ -31,32 +31,264 @@
 				<h1>Drupal Theming with Modular CSS</h1>
 				<small>Nick Grace, Heather Rodriguez &amp; Joseph Gunawan </small>
 			</section>
+
+<!-- SECTION 1: ISSUES -->
+
 			<section>
+				<h2>CSS Is Hard</h2>
+				<p>CSS is difficult to scale on large sites and maintained by large teams.</p>
+			</section>
+
+			<section>
+				<h2>Repetition</h2>
+				<p>Floats, font-size references, heading levels, padding, margins...</p>
+			</section>
+
+			<section>
+				<h2>Unmanageable</h2>
+				<p>It quickly becomes a mess. !important</p>
+			</section>
+
+			<section>
+				<h2>Weight War</h2>
+				<p>You overwrite selectors with new selectors and then add more selectors to overwrite the ones you just created...</p>
+			</section>
+
+			<section>
+				<h2>Coupling</h2>
+				<p>Your CSS becomes tied to HTML and its location in the layout.</p>
+					<pre><code data-trim contenteditable>
+.sidebar-first .info h2 {/* Some Styles */}
+					</code></pre>
+			</section>
+
+			<section>
+				<h2>Drupal CSS Sucks</h2>
+				<p>Things got better with D7 but it still pretty much sucks.</p>
+			</section>
+
+<!-- SECTION 1: SMACSS -->
+
+			<section data-background="#92c4de">
+				<h2>SMACSS to the Rescue!</h2>
+				<p>Use photo.</p>
+			</section>
+
+			<section data-background="#92c4de">
 				<h2>What is SMACSS?</h2>
 				<p>Scalable Modular Architecture for CSS</p>
 			</section>
 
-			<section>
+			<section data-background="#92c4de">
+				<h2>What is SMACSS?</h2>
+				<p>Created by Jonathan Snook in 2011.</p>
+			</section>
+
+			<section data-background="#92c4de">
+				<h2>What is SMACSS?</h2>
+				<blockquote cite="http://alistapart.com/article/frameworksfordesigners">
+					SMACSS is more style guide than rigid framework - an attempt to document a consistent approach to site development when using CSS.
+				</blockquote>
+			</section>
+
+			<section data-background="#92c4de">
+				<h2>What's the Connection with Drupal?</h2>
+				<p>It's being used as D8's CSS architecture and is already being used in Zen 7.5.2.</p>
+			</section>
+
+<!-- SECTION 1: SMACSS Categorizations -->
+
+			<section data-background="#9384850">
+				<h2>Categories</h2>
+				<p>SMACSS separates CSS into the following categories:</p>
+				<ul>
+					<li>Base rules</li>
+					<li>Layout rules</li>
+					<li>Module (and sub-module) rules</li>
+					<li>State rules</li>
+					<li>Theme rules</li>
+				</ul>
+			</section>
+
+			<section data-background="#9384850">
 					<h2>Base</h2>
+					<p>Base rules are the defaults. They are almost exclusively single element selectors. Best to just use Nicholas Gallagher's normalize.css reset.</p>
 					<pre><code data-trim contenteditable>
-.row {
-  clear: left;
-  overflow: hidden;
-  zoom: 1;
-  _overflow: visible;
+html {
+    font-family: sans-serif; /* 1 */
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
 }
 
-.row-features {
-  padding: 1em 0;
-  background-color: blue;
-}
+/**
+ * Remove default margin.
+ */
 
-.row-postscript {
-  padding: 1em 0;
-  background-color: pink;
+body {
+    margin: 0;
 }
 					</code></pre>
 				</section>
+
+	    		<section data-background="#9384850">
+					<h2>Layout</h2>
+					<p>Layout rules divide the page into sections. Layouts hold one or more modules together. You can use frameworks like Zen-Grids or 960 Grid.</p>
+					<pre><code data-trim contenteditable>
+.container_12 .grid_3,
+.container_16 .grid_4 {
+  width: 220px;
+}
+
+.container_12 .grid_6,
+.container_16 .grid_8 {
+  width: 460px;
+}
+
+.container_12 .grid_9,
+.container_16 .grid_12 {
+  width: 700px;
+}
+					</code></pre>
+				</section>
+
+		    	<section data-background="#9384850">
+					<h2>Modules</h2>
+					<p>Modules are the reusable, modular UI parts of the design, including callouts, sidebar sections, product lists, carousels, etc. Includes sub-modules that extend parent modules.</p>
+					<pre><code data-trim contenteditable>
+.newsbox {/* Styles */}
+
+.newsbox--feature {/* Styles */}
+
+.newsbox--body {/* Styles */}
+					</code></pre>
+				</section>
+
+		    	<section data-background="#9384850">
+					<h2>States</h2>
+					<p>State rules are ways to describe how our modules or layouts will look when in a particular state. Hidden? Expanded?</p>
+					<pre><code data-trim contenteditable>
+xxx
+					</code></pre>
+				</section>
+
+		    	<section data-background="#9384850">
+					<h2>Themes</h2>
+					<p>Theme rules describe how the layout or modules might look.</p>
+					<pre><code data-trim contenteditable>
+xxx
+					</code></pre>
+				</section>
+
+<!-- SECTION 1: SMACSS Naming Conventions -->
+
+		    	<section data-background="#007777">
+					<h2>Naming Conventions</h2>
+				</section>
+
+		    	<section data-background="#007777">
+					<h2>Avoid IDs</h2>
+					<p>Use classes rather than IDs for styling purposes. Using classes reduces specifity issues.</p>
+				</section>
+
+		    	<section data-background="#007777">
+					<h2>Semantic</h2>
+					<p>Class names should be meaningful and based on purpose and design.</p>
+				</section>
+
+		    	<section data-background="#007777">
+					<h2>Patterns</h2>
+					<p>Naming convention should follow predictable and understandable patterns.</p>
+				</section>
+
+<!-- SECTION 1: SMACSS Decouple HTML/CSS -->
+
+		    	<section data-background="#8c4738">
+					<h2>Decouple HTML/CSS</h2>
+				</section>
+
+		    	<section data-background="#8c4738">
+					<h2>Decouple</h2>
+					<p>Use additional class names and child selectors.</p>
+					<pre><code data-trim contenteditable>
+.box { }
+.box h2 { }
+					</code></pre>
+				</section>
+
+		    	<section data-background="#8c4738">
+					<pre><code data-trim contenteditable>
+<div class="box">
+	<h2>Heading</h2>
+	<p>Lorem ipsum dolor</p>
+</div>
+					</code></pre>
+				</section>
+
+		    	<section data-background="#8c4738">
+					<h2>Problem</h2>
+					<pre><code data-trim contenteditable>
+.box { }
+.box h2 { }
+.box h3 { }
+.box h4 { }
+.box h5 { }
+.box h6 { }
+					</code></pre>
+				</section>
+
+		    	<section data-background="#8c4738">
+					<h2>Use a Class</h2>
+					<p>Better to decouple CSS and HTML by applying a class to the H2.</p>
+					<pre><code data-trim contenteditable>
+<div class="box">
+	<h2 class="box-heading">Heading</h2>
+	<p>Lorem ipsum dolor</p>
+</div>
+					</code></pre>
+				</section>
+
+<!-- SECTION 1: SMACSS Modules -->
+
+		    	<section>
+					<h2>SMACSS Modules</h2>
+				</section>
+
+		    	<section>
+					<h2>Keep Modules Simple</h2>
+					<p>Base module should be defined as simply as possible to maintain flexibility.</p>
+				</section>
+
+		    	<section>
+					<h2>Don't Undo Styles</h2>
+					<p>Avoid writing rules to undo previous rules.</p>
+					<pre><code data-trim contenteditable>
+/* default style */
+h2 {
+	font-size: 1.5em;
+	margin-bottom: 1em;
+}
+
+/* only when border needed */
+.headline {
+	padding-bottom: 1em;
+	border-bottom: 1px solid #CCC;
+}
+					</code></pre>
+				</section>
+
+		    	<section>
+					<h2>Extend but Don't Modify</h2>
+					<p>Base modules can be extended using sub-modules. Never modify the base module.</p>
+				</section>
+
+
+
+
+
+
+
+
+
 
 
 		</div>
